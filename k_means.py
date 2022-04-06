@@ -3,9 +3,11 @@ import numpy as np
 from PIL import Image
 import time
 
-def cluster(data, k):
+def cluster(data, k, tol=.00001):
     n_exs, n_dims = data.shape
-    mean = data[np.random.randint(n_exs, size=k), :]
+    r = np.ptp(data, axis=0)
+    m = np.amin(data, axis=0)
+    mean = np.random.rand(k, n_dims)*r + m
     c = np.zeros((n_exs, 1))
     while True:
         old_mean = mean.copy()
@@ -15,21 +17,22 @@ def cluster(data, k):
                 a[j] = np.linalg.norm(data[i] - mean[j])
             c[i] = np.argmin(a)
         for j in range(k):
-            n = np.sum((c == j)*data, axis=0)
             d = np.sum(c == j)
             if d > 0:
+                n = np.sum((c == j)*data, axis=0)
                 mean[j] = n / d
-        if np.array_equal(mean, old_mean):
+        max_change = np.amax(np.abs(old_mean - mean))
+        if max_change < tol:
             break
     return c, mean
 
 def main():
-    img = Image.open("images/Starry_Night.jpg")
+    img = Image.open("images/Mona_Lisa.jpg")
     data = np.asarray(img)
     data = data.transpose(1, 0, 2).reshape(-1, 3)
 
     start = time.time()
-    c, mean = cluster(data, k=2)
+    c, mean = cluster(data, k=3)
     end = time.time()
 
     pix = img.load()
