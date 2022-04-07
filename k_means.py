@@ -1,16 +1,19 @@
-import matplotlib.pyplot as plt
 import numpy as np
 from PIL import Image
 from scipy.spatial.distance import cdist
 
 def cluster(data, k, tol=.00001):
+    # Pick k random points as initial means
     means = data[np.random.choice(data.shape[0], k, replace=False)]
     while True:
         old_means = means.copy()
+        # Cluster the data
         dists = cdist(data, means)
         c = np.array([np.argmin(d) for d in dists])
+        # Move the means
         for j in range(k):
             means[j] = data[c == j].mean(axis=0)
+        # Finish if not much movement
         max_change = np.amax(np.abs(old_means - means))
         if max_change < tol:
             break
