@@ -2,7 +2,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 from PIL import Image
 from scipy.spatial.distance import cdist
-from time import time
 
 def cluster(data, k, tol=.00001):
     means = data[np.random.choice(data.shape[0], k, replace=False)]
@@ -22,10 +21,7 @@ def main():
     data = np.asarray(img)
     data = data.transpose(1, 0, 2).reshape(-1, 3)
 
-    start = time()
     c, means = cluster(data, k=10)
-    time_elapsed = time() - start
-    print("Time elapsed:", round(time_elapsed, 2))
 
     pix = img.load()
     for i in range(data.shape[0]):
