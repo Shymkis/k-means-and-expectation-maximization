@@ -12,7 +12,7 @@ def cluster(data, k, tol=.00001):
         c = np.array([np.argmin(d) for d in dists])
         # Move the means
         for j in range(k):
-            means[j] = data[c == j].mean(axis=0)
+            means[j] = np.mean(data[c == j], axis=0)
         # Finish if not much movement
         max_change = np.amax(np.abs(old_means - means))
         if max_change < tol:
