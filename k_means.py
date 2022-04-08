@@ -17,7 +17,7 @@ def cluster(data, k, tol=.00001):
         max_change = np.amax(np.abs(old_means - means))
         if max_change < tol:
             break
-    return c.astype(int), means
+    return c, means
 
 def main():
     img = Image.open("images/Great_Wave_kInf.jpg")
