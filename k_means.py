@@ -17,21 +17,22 @@ def cluster(data, k, tol=.00001):
         max_change = np.amax(np.abs(old_means - means))
         if max_change < tol:
             break
-    return c, means
+    return c.astype(int), means
 
 def main():
     img = Image.open("images/Great_Wave_kInf.jpg")
     data = np.asarray(img)
     data = data.transpose(1, 0, 2).reshape(-1, 3)
 
-    c, means = cluster(data, k=10)
+    c, means = cluster(data, k=2)
 
     pix = img.load()
     for i in range(data.shape[0]):
         x = i // img.size[1]
         y = i % img.size[1]
-        pix[x, y] = tuple(np.around(means[int(c[i])]).astype(int))
-    img.save("images/Great_Wave_k10.jpg")
+        pix[x, y] = tuple(np.around(means[c[i]]).astype(int))
+    # img.save("images/Great_Wave_k10.jpg")
+    img.show()
 
 if __name__ == "__main__":
     main()
