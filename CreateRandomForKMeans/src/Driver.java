@@ -11,28 +11,31 @@ public class Driver {
 	static int fileNo=1;
 	public static void main(String[] args) {
 		// Experiment 1
-		generateWithParameters(3, 1000, 0.5,1,1, "File"+fileNo+".txt");
-		generateWithParameters(3, 1000, 1,1,1, "File"+fileNo+".txt");
-		generateWithParameters(3, 1000, 1.5,1,1, "File"+fileNo+".txt");
-		generateWithParameters(5, 1000, 0.5,1,1, "File"+fileNo+".txt");
-		generateWithParameters(5, 1000, 1,1,1, "File"+fileNo+".txt");
-		generateWithParameters(5, 1000, 1.5,1,1, "File"+fileNo+".txt");
-		generateWithParameters(7, 1000, 0.5,1,1, "File"+fileNo+".txt");
-		generateWithParameters(7, 1000, 1,1,1, "File"+fileNo+".txt");
-		generateWithParameters(7, 1000, 1.5,1,1, "File"+fileNo+".txt");
+		generateWithParameters(3, 3*1000, 0.5, 1,1, "File"+fileNo+".txt");
+		generateWithParameters(3, 3*1000, 1, 1,1, "File"+fileNo+".txt");
+		generateWithParameters(3, 3*1000, 1.5, 1,1, "File"+fileNo+".txt");
+		generateWithParameters(3, 3*1000, 2, 1,1, "File"+fileNo+".txt");
+		generateWithParameters(5, 5*1000, 0.5, 1,1, "File"+fileNo+".txt");
+		generateWithParameters(5, 5*1000, 1, 1,1, "File"+fileNo+".txt");
+		generateWithParameters(5, 5*1000, 1.5, 1,1, "File"+fileNo+".txt");
+		generateWithParameters(5, 5*1000, 2, 1,1, "File"+fileNo+".txt");
+		generateWithParameters(10, 10*1000, 0.5, 1,1, "File"+fileNo+".txt");
+		generateWithParameters(10, 10*1000, 1, 1,1, "File"+fileNo+".txt");
+		generateWithParameters(10, 10*1000, 1.5, 1,1, "File"+fileNo+".txt");
+		generateWithParameters(10, 10*1000, 2, 1,1, "File"+fileNo+".txt");
 		// Experiment 2
-		generateWithParameters(3, 1000, 1.25,2,2, "File"+fileNo+".txt");
-		generateWithParameters(3, 1000, 1.25,5,5, "File"+fileNo+".txt");
-		generateWithParameters(3, 1000, 1.25,10,10, "File"+fileNo+".txt");
+		generateWithParameters(5, 5*1000, 3, 1,1, "File"+fileNo+".txt");
+		generateWithParameters(5, 5*1000, 3, 2,2, "File"+fileNo+".txt");
+		generateWithParameters(5, 5*1000, 3, 3,3, "File"+fileNo+".txt");
 		// Experiment 3
-		generateWithParameters(3, 1000, 1.25,0.75,2, "File"+fileNo+".txt");
+		generateWithParameters(5, 5*1000, 1.25, 0.75,2, "File"+fileNo+".txt");
 		// Experiment 4
-		generateWithParameters(3, 100, 1,1,1, "File"+fileNo+".txt");
-		generateWithParameters(3, 1000, 1,1,1, "File"+fileNo+".txt");
-		generateWithParameters(3, 10000, 1,1,1, "File"+fileNo+".txt");
+		generateWithParameters(5, 5*100, 1, 0.75,0.75, "File"+fileNo+".txt");
+		generateWithParameters(5, 5*1000, 1, 0.75,0.75, "File"+fileNo+".txt");
+		generateWithParameters(5, 5*5000, 1, 0.75,0.75, "File"+fileNo+".txt");
 		
 		
-	} 
+	}
 
 	public static void generateWithParameters(int noOfGenerators,int noOfPoints,double delta,double minStDev,double maxStDev,String fileName)
 	{
